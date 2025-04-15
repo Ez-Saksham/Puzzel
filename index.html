@@ -53,53 +53,72 @@
       bottom: 0;
       width: 100%;
     }
+
+    #main {
+      display: none;
+    }
+
+    #access-denied {
+      color: red;
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 20%;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <script>
-    // Simple password check
-    const password = "sanvi2081"; // You can change this
-    const userInput = prompt("Enter the secret password to continue:");
 
-    if (userInput !== password) {
-      document.write("<h1 style='color:red;text-align:center;margin-top:20%;'>ACCESS DENIED</h1>");
-      throw new Error("Unauthorized access");
+  <div id="access-denied">ACCESS DENIED</div>
+
+  <div id="main">
+    <header>
+      Secret Puzzle Game
+    </header>
+
+    <div class="container">
+      <h2>1. LAYERS OF CIPHER USED</h2>
+      <ul>
+        <li><strong>Morse Code:</strong> Dot = •, Dash = –<br/>Example: •– = A, ––– = O</li>
+        <li><strong>Pigpen Cipher (Pigeon-style):</strong><br/>Uses grid-based symbols and dots<br/>A–I (no dot), J–R (with dot), S–Z (double-box or diagonal)</li>
+        <li><strong>Distractors & Custom Symbols:</strong><br/>Symbols like %, @, □, | • are RED HERRINGS.<br/>| • = "switch to Morse code"</li>
+        <li><strong>Wordplay & Misspelling:</strong><br/>Intentional errors like "STRITKES" or "MITDNIGHT"</li>
+      </ul>
+
+      <h2>2. DECODING STRATEGY (Step-by-step)</h2>
+      <ol>
+        <li>Scan for Morse code: <br/>Example: ••• / –– / •–– → S / M / U</li>
+        <li>Locate "Switch" markers: <code>| •</code> means switch to Morse</li>
+        <li>Identify Pigpen blocks via shapes or corners</li>
+        <li>Ignore distractors like %, @, □</li>
+        <li>Assemble final decoded phrase: <br/><code>STRIKES GOLD AT MIDNIGHT</code></li>
+      </ol>
+
+      <h2>3. HIDDEN PHRASE BUILD-UP (Deconstruction)</h2>
+      <p>
+        <strong>Morse Blocks:</strong> S, M, U, T, G, I, R, L<br/>
+        <strong>Pigpen Blocks:</strong> WATCHING, YOU, etc.<br/>
+        <strong>Distractors:</strong> Only to mislead and confuse decoders<br/>
+        <strong>Repeated Phrases:</strong> "STRIKES GOLD AT" – look for timing
+      </p>
+    </div>
+
+    <footer>
+      - ayan
+    </footer>
+  </div>
+
+  <script>
+    const password = "sanvi2081";
+    const userInput = prompt("Enter the secret password to continue:");
+    
+    if (userInput === password) {
+      document.getElementById("main").style.display = "block";
+    } else {
+      document.getElementById("access-denied").style.display = "block";
+      document.body.style.backgroundColor = "black";
     }
   </script>
 
-  <header>
-    Secret Puzzle Game
-  </header>
-
-  <div class="container">
-    <h2>1. LAYERS OF CIPHER USED</h2>
-    <ul>
-      <li><strong>Morse Code:</strong> Dot = •, Dash = –<br/>Example: •– = A, ––– = O</li>
-      <li><strong>Pigpen Cipher (Pigeon-style):</strong><br/>Uses grid-based symbols and dots<br/>A–I (no dot), J–R (with dot), S–Z (double-box or diagonal)</li>
-      <li><strong>Distractors & Custom Symbols:</strong><br/>Symbols like %, @, □, | • are RED HERRINGS.<br/>| • = "switch to Morse code"</li>
-      <li><strong>Wordplay & Misspelling:</strong><br/>Intentional errors like "STRITKES" or "MITDNIGHT"</li>
-    </ul>
-
-    <h2>2. DECODING STRATEGY (Step-by-step)</h2>
-    <ol>
-      <li>Scan for Morse code: <br/>Example: ••• / –– / •–– → S / M / U</li>
-      <li>Locate "Switch" markers: <code>| •</code> means switch to Morse</li>
-      <li>Identify Pigpen blocks via shapes or corners</li>
-      <li>Ignore distractors like %, @, □</li>
-      <li>Assemble final decoded phrase: <br/><code>STRIKES GOLD AT MIDNIGHT</code></li>
-    </ol>
-
-    <h2>3. HIDDEN PHRASE BUILD-UP (Deconstruction)</h2>
-    <p>
-      <strong>Morse Blocks:</strong> S, M, U, T, G, I, R, L<br/>
-      <strong>Pigpen Blocks:</strong> WATCHING, YOU, etc.<br/>
-      <strong>Distractors:</strong> Only to mislead and confuse decoders<br/>
-      <strong>Repeated Phrases:</strong> "STRIKES GOLD AT" – look for timing
-    </p>
-  </div>
-
-  <footer>
-    - ayan
-  </footer>
 </body>
 </html>
